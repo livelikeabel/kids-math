@@ -3,32 +3,16 @@ import PropTypes from "prop-types";
 import "./Bord.scss";
 
 function Bord(props) {
+  const renderRow = (initNum = 0) => {
+    return Array(10)
+      .fill(null)
+      .map((_, i) => <td>{initNum + i + 1}</td>);
+  };
+
   return (
     <table className="Bord">
-      <tr>
-        <td>1</td>
-        <td>1</td>
-        <td>1</td>
-        <td>1</td>
-        <td>1</td>
-        <td>1</td>
-        <td>1</td>
-        <td>1</td>
-        <td>1</td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>2</td>
-        <td>2</td>
-        <td>2</td>
-        <td>2</td>
-        <td>2</td>
-        <td>2</td>
-        <td>2</td>
-        <td>2</td>
-        <td>2</td>
-        <td>2</td>
-      </tr>
+      <tr>{renderRow()}</tr>
+      <tr>{renderRow(10)}</tr>
     </table>
   );
 }
