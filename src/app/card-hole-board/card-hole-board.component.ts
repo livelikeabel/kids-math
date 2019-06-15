@@ -19,18 +19,11 @@ export class CardHoleBoardComponent implements OnInit {
     { value: 10, checked: false }
   ];
 
-  boardNumbers2 = [
-    { value: 11, checked: false },
-    { value: 12, checked: false },
-    { value: 13, checked: false },
-    { value: 14, checked: false },
-    { value: 15, checked: false },
-    { value: 16, checked: false },
-    { value: 17, checked: false },
-    { value: 18, checked: false },
-    { value: 19, checked: false },
-    { value: 20, checked: false }
-  ];
+  _getNewBoardNumbers = () => {
+    return this.boardNumbers.slice(-10).map(({ value }) => {
+      return { value: value + 10, checked: false };
+    });
+  };
 
   checkFinish = ({ number: { value, checked }, previousContainer }) => {
     this.boardNumbers = this.boardNumbers.map(number => {
@@ -41,8 +34,10 @@ export class CardHoleBoardComponent implements OnInit {
       return checked === true;
     });
     if (isFinish) {
-      this.boardNumbers.push(...this.boardNumbers2);
-      previousContainer.data.push(...this.boardNumbers2);
+      const newBoardNumbers = this._getNewBoardNumbers();
+      if (this.boardNumbers.length > 10) this.boardNumbers.splice(0, 10);
+      this.boardNumbers.push(...newBoardNumbers);
+      previousContainer.data.push(...newBoardNumbers);
     }
   };
 

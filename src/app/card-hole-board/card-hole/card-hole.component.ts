@@ -20,10 +20,8 @@ export class CardHoleComponent implements OnInit {
 
   ngOnInit() {}
 
-  // 위에서 받아야 할듯...
   _checkFinish = previousContainer => {
     this.finishEvent.emit({ number: this.hole[0], previousContainer });
-    console.log(previousContainer.data);
   };
 
   validateDragCondition = e => {
