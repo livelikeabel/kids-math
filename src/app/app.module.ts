@@ -6,15 +6,17 @@ import { DragDropModule } from "@angular/cdk/drag-drop";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { CardHoleBoardComponent } from "./card-hole-board/card-hole-board.component";
-import { CardComponent } from "./card/card.component";
+import { CardComponent } from "./card-board/card/card.component";
 import { CardHoleComponent } from "./card-hole-board/card-hole/card-hole.component";
+import { CardBoardComponent } from "./card-board/card-board.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     CardHoleBoardComponent,
     CardComponent,
-    CardHoleComponent
+    CardHoleComponent,
+    CardBoardComponent
   ],
   imports: [
     BrowserModule,

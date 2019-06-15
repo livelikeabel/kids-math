@@ -1,3 +1,12 @@
-h1 {
-  text-align: center;
+.App {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-evenly;
+  justify-content: center;
+  height: 100vh;
+  h1 {
+    width: 100%;
+    text-align: center;
+    margin: 0;
+  }
 }
