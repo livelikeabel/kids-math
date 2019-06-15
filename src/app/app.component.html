@@ -1,8 +1,6 @@
 <h1>🎈 숫자 놀이 🔢</h1>
 
-<app-card-board></app-card-board>
-<app-card *ngFor="let number of numberList" [number]="number">{{
-  number
-}}</app-card>
+<app-card-hole-board></app-card-hole-board>
+<app-card *ngFor="let number of numberList" [number]="number"></app-card>
 
 <router-outlet></router-outlet>
