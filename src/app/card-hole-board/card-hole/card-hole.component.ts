@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import {
   CdkDragDrop,
   moveItemInArray,
@@ -11,32 +11,42 @@ import {
   styleUrls: ["./card-hole.component.scss"]
 })
 export class CardHoleComponent implements OnInit {
-  @Input() holeNumber: number;
+  @Input() holeNumber: object;
+  @Output() finishEvent = new EventEmitter();
+
   hole = [];
 
   constructor() {}
 
   ngOnInit() {}
 
-  validateDragCondition = e =>
-    this.hole.length >= 1 ||
-    e.previousContainer.data[e.previousIndex] !== this.holeNumber;
+  // 위에서 받아야 할듯...
+  _checkFinish = previousContainer => {
+    this.finishEvent.emit({ number: this.hole[0], previousContainer });
+    console.log(previousContainer.data);
+  };
+
+  validateDragCondition = e => {
+    return (
+      this.hole.length >= 1 ||
+      e.previousContainer.data[e.previousIndex].value !== this.holeNumber.value
+    );
+  };
 
   drop(event: CdkDragDrop<string[]>) {
+    const { previousContainer, previousIndex, container, currentIndex } = event;
     if (this.validateDragCondition(event)) return;
-    if (event.previousContainer === event.container) {
-      moveItemInArray(
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex
-      );
+    if (previousContainer === container) {
+      moveItemInArray(container.data, previousIndex, currentIndex);
     } else {
+      previousContainer.data[previousIndex].checked = true;
       transferArrayItem(
-        event.previousContainer.data,
+        previousContainer.data,
         event.container.data,
-        event.previousIndex,
-        event.currentIndex
+        previousIndex,
+        currentIndex
       );
     }
+    this._checkFinish(previousContainer);
   }
 }

@@ -2,5 +2,6 @@
   <app-card-hole
     *ngFor="let number of boardNumbers"
     [holeNumber]="number"
+    (finishEvent)="checkFinish($event)"
   ></app-card-hole>
 </div>

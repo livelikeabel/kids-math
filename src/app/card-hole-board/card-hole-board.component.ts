@@ -7,27 +7,44 @@ import { Component, OnInit } from "@angular/core";
 })
 export class CardHoleBoardComponent implements OnInit {
   boardNumbers = [
-    1,
-    2,
-    3,
-    4,
-    5,
-    6,
-    7,
-    8,
-    9,
-    10,
-    11,
-    12,
-    13,
-    14,
-    15,
-    16,
-    17,
-    18,
-    19,
-    20
+    { value: 1, checked: false },
+    { value: 2, checked: false },
+    { value: 3, checked: false },
+    { value: 4, checked: false },
+    { value: 5, checked: false },
+    { value: 6, checked: false },
+    { value: 7, checked: false },
+    { value: 8, checked: false },
+    { value: 9, checked: false },
+    { value: 10, checked: false }
   ];
+
+  boardNumbers2 = [
+    { value: 11, checked: false },
+    { value: 12, checked: false },
+    { value: 13, checked: false },
+    { value: 14, checked: false },
+    { value: 15, checked: false },
+    { value: 16, checked: false },
+    { value: 17, checked: false },
+    { value: 18, checked: false },
+    { value: 19, checked: false },
+    { value: 20, checked: false }
+  ];
+
+  checkFinish = ({ number: { value, checked }, previousContainer }) => {
+    this.boardNumbers = this.boardNumbers.map(number => {
+      if (number.value === value) number.checked = checked;
+      return number;
+    });
+    const isFinish = this.boardNumbers.every(({ checked }) => {
+      return checked === true;
+    });
+    if (isFinish) {
+      this.boardNumbers.push(...this.boardNumbers2);
+      previousContainer.data.push(...this.boardNumbers2);
+    }
+  };
 
   constructor() {}
 

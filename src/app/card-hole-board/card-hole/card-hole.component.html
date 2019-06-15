@@ -4,8 +4,8 @@
   (cdkDropListDropped)="drop($event)"
   class="card-hole"
 >
-  {{ holeNumber }}
+  {{ holeNumber.value }}
   <div class="card" *ngFor="let item of hole" cdkDrag>
-    {{ item }}
+    {{ item.value }}
   </div>
 </div>
