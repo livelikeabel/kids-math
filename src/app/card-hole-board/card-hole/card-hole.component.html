@@ -1,1 +1,10 @@
-<div class="card-hole">{{ holeNumber }}</div>
+<div
+  style="background: gray"
+  cdkDropList
+  [cdkDropListData]="hole"
+  (cdkDropListDropped)="drop($event)"
+  class="card-hole"
+>
+  <!-- {{ holeNumber }} -->
+  <div class="card-hole" *ngFor="let item of hole" cdkDrag>{{ item }}</div>
+</div>

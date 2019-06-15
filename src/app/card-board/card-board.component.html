@@ -1,4 +1,11 @@
-<div class="card-board">
+<div
+  cdkDropList
+  [cdkDropListData]="numberList"
+  (cdkDropListDropped)="drop($event)"
+  class="card-board"
+>
   <h3>숫자를 옮겨 보아요!👆🏼</h3>
-  <app-card *ngFor="let number of numberList" [number]="number"></app-card>
+  <div class="card" *ngFor="let number of numberList" cdkDrag>
+    {{ number }}
+  </div>
 </div>
