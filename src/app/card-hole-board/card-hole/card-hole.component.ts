@@ -18,7 +18,12 @@ export class CardHoleComponent implements OnInit {
 
   ngOnInit() {}
 
+  validateDragCondition = e =>
+    this.hole.length >= 1 ||
+    e.previousContainer.data[e.previousIndex] !== this.holeNumber;
+
   drop(event: CdkDragDrop<string[]>) {
+    if (this.validateDragCondition(event)) return;
     if (event.previousContainer === event.container) {
       moveItemInArray(
         event.container.data,
