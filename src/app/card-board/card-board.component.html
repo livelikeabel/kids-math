@@ -1,6 +1,7 @@
 <section class="card-board">
   <h3>숫자를 옮겨 보아요!👆🏼</h3>
   <div
+    class="card-board-inner"
     cdkDropList
     [cdkDropListData]="numberList"
     (cdkDropListDropped)="drop($event)"
