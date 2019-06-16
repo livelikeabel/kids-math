@@ -11,7 +11,7 @@ import {
   styleUrls: ["./card-hole.component.scss"]
 })
 export class CardHoleComponent implements OnInit {
-  @Input() holeNumber: object;
+  @Input() holeNumber;
   @Output() finishEvent = new EventEmitter();
 
   hole = [];
@@ -25,14 +25,15 @@ export class CardHoleComponent implements OnInit {
   };
 
   validateDragCondition = e => {
-    const {value} = this.holeNumber
+    const { value } = this.holeNumber;
     return (
       this.hole.length >= 1 ||
       e.previousContainer.data[e.previousIndex].value !== value
     );
   };
 
-  drop(event: CdkDragDrop<string[]>) {
+  // drop(event: CdkDragDrop<string[]>) {
+  drop(event) {
     const { previousContainer, previousIndex, container, currentIndex } = event;
     if (this.validateDragCondition(event)) return;
     if (previousContainer === container) {
