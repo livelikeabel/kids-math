@@ -1,0 +1,7 @@
+<div class="card-hole-board-level-two">
+  <app-card-hole-level-two
+    *ngFor="let number of boardNumbers"
+    [holeNumber]="number"
+    (finishEvent)="checkFinish($event)"
+  ></app-card-hole-level-two>
+</div>
