@@ -25,9 +25,10 @@ export class CardHoleComponent implements OnInit {
   };
 
   validateDragCondition = e => {
+    const {value} = this.holeNumber
     return (
       this.hole.length >= 1 ||
-      e.previousContainer.data[e.previousIndex].value !== this.holeNumber.value
+      e.previousContainer.data[e.previousIndex].value !== value
     );
   };
 

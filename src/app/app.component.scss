@@ -1,12 +1,16 @@
 .App {
-  display: flex;
-  flex-wrap: wrap;
-  align-content: space-evenly;
-  justify-content: center;
   height: 100vh;
+  background: #f6f6f6;
+
   h1 {
+    background: #74b816;
+    border-bottom: 1px solid #2b8a3e;
+    height: 70px;
+    line-height: 70px;
+    font-size: 25px;
     width: 100%;
+    margin: 0 0 100px;
     text-align: center;
-    margin: 0;
+    color: white;
   }
 }
