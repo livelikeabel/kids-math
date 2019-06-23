@@ -1,6 +1,6 @@
 <div class="stage">
   <div *ngFor="let number of numberList" class="number-button">
-    <div *ngIf="!number.isInput">
+    <div class="card" *ngIf="!number.isInput">
         {{number.value}}
     </div>
     <input
