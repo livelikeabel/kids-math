@@ -29,7 +29,21 @@ export class Level3Component implements OnInit {
         return v
       })
     }
-
+    this.checkNumberList();
   }
 
+  checkNumberList() {
+    const result = this.numberList.every(v => !v.isInput)
+    
+    // 다음 스테이지
+    if(result) {
+      this.numberList = this.numberList.map(({value, isInput}) => {
+        return {value: value + 30, isInput}
+      })
+      .map(({value, isInput}) => {
+        if (value == 36 || value == 42 || value == 57) isInput = true;
+        return {value, isInput}
+      })
+    }
+  }
 }
