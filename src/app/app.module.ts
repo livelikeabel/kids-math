@@ -14,6 +14,7 @@ import { Level2Component } from "./level2/level2.component";
 import { Level1Component } from "./level1/level1.component";
 import { CardHoleBoardLevelTwoComponent } from "./card-hole-board-level-two/card-hole-board-level-two.component";
 import { CardHoleLevelTwoComponent } from "./card-hole-board-level-two/card-hole-level-two/card-hole-level-two.component";
+import { Level3Component } from './level3/level3.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { CardHoleLevelTwoComponent } from "./card-hole-board-level-two/card-hole
     Level2Component,
     Level1Component,
     CardHoleBoardLevelTwoComponent,
-    CardHoleLevelTwoComponent
+    CardHoleLevelTwoComponent,
+    Level3Component
   ],
   imports: [
     BrowserModule,
@@ -34,7 +36,8 @@ import { CardHoleLevelTwoComponent } from "./card-hole-board-level-two/card-hole
     DragDropModule,
     RouterModule.forRoot([
       { path: "", component: Level1Component },
-      { path: "level2", component: Level2Component }
+      { path: "level2", component: Level2Component },
+      { path: "level3", component: Level3Component }
     ])
   ],
   providers: [],
