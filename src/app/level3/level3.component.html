@@ -1,3 +1,12 @@
 <div class="stage">
-  <div *ngFor="let number of numberList" class="number-button">{{number}}</div>
+  <div *ngFor="let number of numberList" class="number-button">
+    <div *ngIf="!number.isInput">
+        {{number.value}}
+    </div>
+    <input
+      #inputData
+      *ngIf="number.isInput"
+      (keyup)="onKey(number, inputData.value)"
+    >
+  </div>
 </div>

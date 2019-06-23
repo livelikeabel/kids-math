@@ -10,14 +10,26 @@ export class Level3Component implements OnInit {
   numberList = []
 
   constructor() {
-    this.numberList = new Array(30).fill(null).map((_, i) => i+1)
-    .map(v => {
-      if (v == 6 || v == 12 || v == 27) v = 'input';
-      return v
+    this.numberList = new Array(30).fill(null).map((_, i) => {
+      return { value: i+1, isInput: false}
+    })
+    .map(({value, isInput})=> {
+      if (value == 6 || value == 12 || value == 27) isInput = true;
+      return {value, isInput}
     })
   }
 
   ngOnInit() {
+  }
+
+  onKey({value}, inputValue) {
+    if(value == inputValue) {
+      this.numberList = this.numberList.map(v => {
+        if(v.value == value) v.isInput = !v.isInput
+        return v
+      })
+    }
+
   }
 
 }
