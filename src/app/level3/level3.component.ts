@@ -60,7 +60,7 @@ export class Level3Component implements OnInit {
 
   _getRandomNumbers(min, max) {
     const temp = [];
-    for (let i = 0; i < 2; i++) {
+    for (let i = 0; i < 6; i++) {
       temp.push(Math.floor(Math.random() * (max - min + 1)) + min);
     }
     return temp;
